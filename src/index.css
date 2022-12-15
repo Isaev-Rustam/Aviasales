@@ -1,0 +1,25 @@
+@import-normalize;
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans'), url('assets/fonts/OpenSans-SemiBold.ttf') format('ttf');
+  font-weight: 600;
+  font-style: normal;
+}
+
+*,
+*::after,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+img {
+  vertical-align: middle;
+}

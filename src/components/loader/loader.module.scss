@@ -1,0 +1,44 @@
+.loader__item {
+  height: 12px;
+  background-image: repeating-linear-gradient(-45deg, rgb(0, 0, 0), rgb(0, 0, 0) 25px, blue 25px, blue 50px);
+  -webkit-animation: progress 2s linear infinite;
+  -moz-animation: progress 2s linear infinite;
+  -ms-animation: progress 2s linear infinite;
+  animation: progress 2s linear infinite;
+  background-size: 150% 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+@-webkit-keyframes progress {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -75px 0px;
+  }
+}
+@-moz-keyframes progress {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -75px 0px;
+  }
+}
+@-ms-keyframes progress {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -75px 0px;
+  }
+}
+@keyframes progress {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -70px 0px;
+  }
+}

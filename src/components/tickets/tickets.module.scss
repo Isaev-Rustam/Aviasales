@@ -1,0 +1,44 @@
+.tickets {
+  flex: 0 1 500px;
+  display: flex;
+  flex-direction: column;
+
+  &__filter {
+    margin-bottom: 20px;
+  }
+
+  &__btn {
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.5em;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 15px 20px;
+    border-radius: 5px;
+    margin-bottom: 50px;
+    cursor: url('../../assets/Cursor.png'), pointer;
+    border: 2px solid #dfe5ec;
+    color: #ffffff;
+    background-color: #2196f3;
+    border: none;
+    transition: outline 0.3s linear 0s;
+  }
+
+  &__card {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__btn:hover,
+  &__btn:focus,
+  &__btn:active {
+    outline: 2px solid #21f3d7;
+  }
+
+  &__btn--disabled {
+    background-color: #536674;
+    cursor: auto;
+  }
+}

@@ -1,0 +1,88 @@
+.filter {
+  &__input {
+    position: absolute;
+    appearance: none;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    padding: 0;
+    border: 0;
+
+    &:checked + .filter__box {
+      background: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.28571 8L0 4.16123L1.20857 3.0787L4.28571 5.82726L10.7914 0L12 1.09021C8.98738 3.78865 7.29833 5.30156 4.28571 8Z' fill='%232196F3'/%3E%3C/svg%3E%0A")
+        no-repeat 50%;
+    }
+
+    &:focus + .filter__box,
+    &:hover + .filter__box {
+      box-shadow: 0 0 0 1px #2196f3, 0 0 0 2px #21f3d7;
+    }
+
+    &:disabled + .filter__box {
+      box-shadow: 0 0 0 1px #666672;
+    }
+
+    &:checked:disabled + .filter__box {
+      background-color: #666672;
+    }
+  }
+
+  &__box {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    margin-left: -30px;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px #2196f3;
+    transition: all 0.2s linear 0s;
+  }
+
+  &__items {
+    @media (max-width: 770px) {
+      max-width: 370px;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 auto;
+      justify-content: space-between;
+      gap: 15px;
+    }
+  }
+
+  &__check + &__check {
+    margin-top: 20px;
+    @media (max-width: 770px) {
+      margin-top: 0;
+    }
+  }
+
+  &__check {
+    display: block;
+    padding-left: 30px;
+    line-height: 20px;
+    min-width: 130px;
+    cursor: url('../../assets/Cursor.png'), pointer;
+    @media (max-width: 770px) {
+      &--item-1 {
+        flex-basis: 100%;
+        order: 1;
+      }
+      &--item-2 {
+        order: 2;
+      }
+      &--item-3 {
+        order: 4;
+      }
+      &--item-4 {
+        order: 3;
+      }
+      &--item-5 {
+        order: 5;
+      }
+    }
+    @media (max-width: 351px) {
+      order: 1;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+.tabs-filter {
+  display: flex;
+  list-style: none;
+  white-space: nowrap;
+
+  &__item {
+    width: calc(100% / 3);
+  }
+
+  &__btn {
+    width: 100%;
+    padding: 15px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background-color: #ffffff;
+    border: 2px solid #dfe5ec;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    outline: none;
+    cursor: url('../../assets/Cursor.png'), pointer;
+    transition: border 0.3s linear 0s;
+
+    &--active {
+      background: #2196f3;
+      color: #ffffff;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      border: 2px solid #21f3d7;
+    }
+  }
+
+  &__item:first-child button {
+    border-radius: 10px 0 0 10px;
+  }
+
+  &__item:last-child button {
+    border-radius: 0 10px 10px 0;
+  }
+
+  @media (max-width: 510px) {
+    flex-direction: column;
+    &__item {
+      width: 100%;
+    }
+    &__item:nth-child(n) button {
+      border-radius: 10px;
+    }
+  }
+}
