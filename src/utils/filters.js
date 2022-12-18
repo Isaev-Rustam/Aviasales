@@ -5,46 +5,45 @@ export const getVisibleTodos = (todos, filter) => {
     case VisibilityFilters.CHEAPEST:
       return todos.slice().sort((a, b) => a.price - b.price);
     case VisibilityFilters.FASTEST:
-      return [...todos.sort((a, b) => a.segments[0] + a.segments[1] - (b.segments[0] + b.segments[1]))];
+      return [...todos.sort((a, b) => a.segments[0] - b.segments[0])];
     case VisibilityFilters.OPTIMAL:
-      return [
-        ...todos.sort(
-          (a, b) =>
-            a.price +
-            a.segments[0].duration +
-            a.segments[1].duration -
-            (b.price + b.segments[0].duration + b.segments[1].duration)
-        ),
-      ];
+      return [...todos.sort((a, b) => a.price + a.segments[0].duration + (b.price + b.segments[0].duration))];
     default:
       return todos;
   }
 };
-
-export const getVisibleNumTransfers = (todos, checkboxes, checkbox) => {
-  let VisibleItems = [...todos];
-  if (checkbox === 0) {
-    return checkboxes[0] ? VisibleItems : [];
+export const getVisibleNumTransfers = (data, state) => {
+  const items = [...data];
+  let visibleItems = [];
+  if (state.every((i) => i === true)) {
+    return items;
   }
-  if (checkboxes[checkbox] && checkbox === 1) {
-    VisibleItems = VisibleItems.filter(
-      (ticket) => ticket?.segments[0]?.stops?.length === 0 && ticket?.segments[1]?.stops?.length === 0
-    ).concat(VisibleItems);
+  if (state.every((i) => i === false)) {
+    return [];
   }
-  if (checkboxes[checkbox] && checkbox === 2) {
-    VisibleItems = VisibleItems.filter(
-      (ticket) => ticket?.segments[0]?.stops?.length === 1 && ticket?.segments[1]?.stops?.length === 1
-    ).concat(VisibleItems);
+  if (state[1]) {
+    visibleItems = [
+      ...visibleItems,
+      ...items.filter((ticket) => ticket?.segments[0]?.stops?.length === 0 && ticket?.segments[1]?.stops?.length === 0),
+    ];
   }
-  if (checkboxes[checkbox] && checkbox === 3) {
-    VisibleItems = VisibleItems.filter(
-      (ticket) => ticket?.segments[0]?.stops?.length === 2 && ticket?.segments[1]?.stops?.length === 2
-    ).concat(VisibleItems);
+  if (state[2]) {
+    visibleItems = [
+      ...visibleItems,
+      ...items.filter((ticket) => ticket?.segments[0]?.stops?.length === 1 && ticket?.segments[1]?.stops?.length === 1),
+    ];
   }
-  if (checkboxes[checkbox] && checkbox === 4) {
-    VisibleItems = VisibleItems.filter(
-      (ticket) => ticket?.segments[0]?.stops?.length === 3 && ticket?.segments[1]?.stops?.length === 3
-    ).concat(VisibleItems);
+  if (state[3]) {
+    visibleItems = [
+      ...visibleItems,
+      ...items.filter((ticket) => ticket?.segments[0]?.stops?.length === 2 && ticket?.segments[1]?.stops?.length === 2),
+    ];
   }
-  return VisibleItems;
+  if (state[4]) {
+    visibleItems = [
+      ...visibleItems,
+      ...items.filter((ticket) => ticket?.segments[0]?.stops?.length === 2 && ticket?.segments[1]?.stops?.length === 3),
+    ];
+  }
+  return visibleItems;
 };

@@ -43,8 +43,8 @@ NumTransfers.propTypes = {
   handleChange: PropTypes.func,
 };
 
-const mapStateToProps = ({ checkFilter: { checkboxes } }) => ({
-  checkState: [...checkboxes],
+const mapStateToProps = ({ checkFilter }) => ({
+  checkState: [...checkFilter],
 });
 
 const mapDispatchToProps = { handleChange: checkFilterNumTransfers };

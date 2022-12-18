@@ -64,13 +64,10 @@ Tickets.propTypes = {
   loading: PropTypes.bool.isRequired,
   loadingAll: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.bool, PropTypes.number])).isRequired,
 };
+// tickets: getVisibleNumTransfers(getVisibleTodos(tickets, selectFilter), checkboxes, checkbox),
 
-const mapStateToProps = ({
-  tickets: { tickets, loading, loadingAll },
-  selectFilter,
-  checkFilter: { checkboxes, checkbox },
-}) => ({
-  tickets: getVisibleNumTransfers(getVisibleTodos(tickets, selectFilter), checkboxes, checkbox),
+const mapStateToProps = ({ tickets: { tickets, loading, loadingAll }, selectFilter, checkFilter }) => ({
+  tickets: getVisibleNumTransfers(getVisibleTodos(tickets, selectFilter), checkFilter),
   filter: selectFilter,
   loading,
   loadingAll,
